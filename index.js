@@ -5,11 +5,11 @@ let balls = [];
 let ground;
 let thickness = 20;
 let bottomEdgeRight;
-let bottomEdgeLeft
+let bottomEdgeLeft;
 let topEdgeLeft;
-let topEdgeRight
+let topEdgeRight;
 let leftEdgeTop;
-let leftEdgeBottom
+let leftEdgeBottom;
 let rightEdgeTop;
 let rightEdgeBottom;
 
@@ -19,22 +19,12 @@ canvas.width = 400;
 canvas.height = 400;
 ctx.strokeStyle = "white";
 engine = Engine.create();
-// engine.gravity = new Vector(0,0)
+engine.gravity = new Vector(0, 0);
 
-topEdgeRight = new Boundary(
-  canvas.width/2,
-  0 + 1,
-  canvas.width,
-  thickness
-);
-topEdgeLeft = new Boundary(
-  -canvas.width/2,
-  0 + 1,
-  canvas.width,
-  thickness
-);
+topEdgeRight = new Boundary(canvas.width / 2, 0 + 1, canvas.width, thickness);
+topEdgeLeft = new Boundary(-canvas.width / 2, 0 + 1, canvas.width, thickness);
 bottomEdgeRight = new Boundary(
-  canvas.width/2,
+  canvas.width / 2,
   canvas.height - thickness,
   canvas.width,
   thickness
@@ -44,25 +34,15 @@ bottomEdgeLeft = new Boundary(
   canvas.height - thickness,
   canvas.width,
   thickness
-)
-leftEdgeBottom = new Boundary(
-  0,
-  canvas.height/2,
-  thickness,
-  canvas.height
-)
-leftEdgeTop = new Boundary(
-  0,
-  -canvas.height/2,
-  thickness,
-  canvas.height
-)
+);
+leftEdgeBottom = new Boundary(0, canvas.height / 2, thickness, canvas.height);
+leftEdgeTop = new Boundary(0, -canvas.height / 2, thickness, canvas.height);
 rightEdgeTop = new Boundary(
   canvas.width - thickness,
-  -canvas.height/ 2,
+  -canvas.height / 2,
   thickness,
   canvas.height
-)
+);
 rightEdgeBottom = new Boundary(
   canvas.width - thickness,
   canvas.height / 2,
@@ -76,12 +56,12 @@ function animate() {
   bottomEdgeRight.draw();
   bottomEdgeLeft.draw();
   topEdgeRight.draw();
-  topEdgeLeft.draw()
-  leftEdgeBottom.draw()
-  leftEdgeTop.draw()
-  rightEdgeTop.draw()
-  rightEdgeBottom.draw()
-  
+  topEdgeLeft.draw();
+  leftEdgeBottom.draw();
+  leftEdgeTop.draw();
+  rightEdgeTop.draw();
+  rightEdgeBottom.draw();
+
   for (let i = 0; i < balls.length; i++) {
     balls[i].draw();
     balls[i].edges();
@@ -97,7 +77,7 @@ animate();
 
 canvas.addEventListener("pointermove", (e) => {
   balls.push(new Circle(e.offsetX, e.offsetY, Math.random() * 10 + 10));
-  console.log(balls)
+  console.log(balls);
 });
 
 // window.addEventListener("resize", () => {
